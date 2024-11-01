@@ -1,0 +1,12 @@
+// ----abstract----
+@import "./abstract/normalize", "./abstract/variables", "./abstract/mixins", "./abstract/media", "./abstract/grid";
+
+// ----base---
+@import "./base/fonts", "./base/global", "./base/base";
+
+// ----blocks---
+@import "./bloks/header";
+@import "./bloks/footer";
+
+// ----components---
+@import "./components/burger";

@@ -1,0 +1,75 @@
+@mixin adaptive-font($pcSize, $mobileSize) {
+    $addSize: $pcSize - $mobileSize;
+    $addMobileSize: $addSize + $addSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobileSize + px} + #{$addMobileSize} * ((100vw - 430px) / 1440));
+    }
+    @media (min-width: 767px) {
+        font-size: calc(#{$mobileSize + px} + #{$addSize} * (100vw / 1440));
+    }
+}
+
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+@mixin btn($bd-color, $bg-color, $bdrs, $color, $font-size, $p-height, $p-width) {
+    border: 1px solid $bd-color;
+    background-color: $bg-color;
+    border-radius: $bdrs;
+    color: $color;
+    font-size: $font-size;
+    padding: $p-height $p-width;
+  }
+
+@mixin flex-center($isInline: false) {
+    @if $isInline {
+        display: inline-flex;
+    } @else {
+        display: flex;
+    }
+
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+@mixin square($size) {
+    width: $size;
+    aspect-ratio: 1;
+}
+
+@mixin psevdo {
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+
+    @media (hover: none) {
+        &:active {
+            @content;
+        }
+    }
+}
